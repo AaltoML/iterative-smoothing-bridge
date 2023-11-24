@@ -1,0 +1,6 @@
+.DS_Store
+plots
+outputs
+isb_models/
+bridge_models/
+data/MNIST

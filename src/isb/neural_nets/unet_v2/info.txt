@@ -1,0 +1,1 @@
+All code in this folder has been copied/modified from De bortoli et al. schrödinger bridge paper codebase.

@@ -1,0 +1,76 @@
+# dataset settings
+dataset:
+  n_dim: (1, 28, 28)
+  num_channels: 1
+  dataset_name: mnist
+  data_subset: 8 - eight
+  centered: False
+  augment_noise: 0.001
+  obs_dataset: block_self
+  masking: True
+  mask_type: data_mask
+  distance: euclidean
+  encode: False
+  obs_subset: 8 - eight
+
+
+# model settings
+model:
+  fwd_drift_file_name: iterative_smoothing_mnist_forward
+  bwd_drift_file_name: iterative_smoothing_mnist_backward
+  score: nn
+  drift: nn
+  init_drift: nn
+  drift_file_name: iftp_mnist_bwd
+  warm_start: True
+  save_score_model: True
+  save_drift_model: False
+  model_type: imagev2
+  start_type: warm
+  init_dist: gauss
+  time_diff: 0.005  # was 0.005
+  gamma_max: 1  # was 1
+  gamma_min: 0.0001  # was 0.0001
+  gamma_type: linear
+  num_heads: 4
+  fir: False
+  nonlinearity: swish
+  nf: 64 
+  ch_mult: (1, 2, 2)
+  num_res_blocks: 3
+  attn_resolutions: (14, )
+  dropout: 0.0
+  resamp_with_conv: True
+  skip_rescale: True
+  init_scale: 0.0
+  load_score_model: False
+  load_drift_model: True
+
+# filter settings
+filter:
+  n_particles: 1000  #was 300
+  stochastic: False
+  t_min: 0
+  time_diff: 0.005    # was 0.005
+  n_steps: 100
+  time_forward: True
+  transport_eps: 0.01   # testing values
+  obs_noise_1: 0.3 # observation noise at time 0
+  obs_noise_2: 0.3
+  obs_noise: 0.5
+  obs_noise_mult: 1.25
+  n_obs: 1 # number of observations 
+  n_ts: 1 # number of timeseries to select observations from ALERT!
+  unit_var: True
+  zero_mean: True
+
+
+train:
+  lr: 0.0001
+  skip_train: False
+  n_refresh: 1000
+  batch_size: 128 # was 256
+  n_iters: 15000  # was 5000
+  n_iftp: 6  # was 10
+  n_smooth: 6
+  savepickle: False

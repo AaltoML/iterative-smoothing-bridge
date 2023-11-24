@@ -1,0 +1,41 @@
+# training settings
+train:
+  batch_size : 512
+  nn_iters: 5000
+  nn_refresh: 1000
+  cache_size: 10000
+  iftp_epochs: 5
+  n_trajectories: 1
+  lr: 0.001
+
+# dataset settings
+dataset:
+  n_dim: (2,)
+  dataset_name: circles
+  plot_y_min: -15
+  plot_y_max: 15
+  plot_x_min: -15
+  plot_x_max: 15
+
+# model settings
+model:
+  forward_name: iftp_circles_forward_for_filter
+  backward_name: iftp_circles_backward_for_filter
+  stepsize_scaling: True
+  model_output_shift: True
+  model_type: flat
+  start_type: warm
+  gamma_min: 0.001
+  gamma_max: 1
+  gamma_type: linear
+  num_steps: 100
+  time_diff: 0.01
+  unit_var: False
+  zero_mean: False
+
+#prior model settings
+prior:
+  prior_type: match
+  prior_model: basic
+
+

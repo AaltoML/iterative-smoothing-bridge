@@ -1,0 +1,60 @@
+
+# dataset settings
+dataset:
+  n_dim: (5,)
+  dataset_name: rna
+  plot_y_min: -5
+  plot_y_max: 5
+  plot_x_min: -5
+  plot_x_max: 5
+  obs_dataset: rna # observations will be taken from the transport dynamics
+
+# model settings
+model:
+  fwd_drift_file_name: iterative_smoother_rna_fwd
+  bwd_drift_file_name: iterative_smoother_rna_bwd
+  score: nn
+  drift: nn
+  init_drift: zero
+  warm_start: True
+  drift_file_name: None
+  model_type: flat
+  save_score_model: True
+  save_drift_model: False
+  gamma_min: 1
+  gamma_max: 1  # vargas et al. match
+  init_gamma_multiplier: 1
+  init_dist: loader
+  load_score_model: False
+  load_drift_model: True
+
+# filter settings
+filter:
+  n_particles: 1000
+  stochastic: False
+  t_min: 0
+  time_diff: 0.01
+  n_steps: 400
+  time_forward: False
+  transport_eps: 0.01 
+  obs_noise_1: 0.7 # observation noise at time 1
+  obs_noise_2: 0.7
+  obs_noise:  1 # was 1
+  obs_noise_mult: 0.7 # was 0.7
+  schedule_type: linear
+  n_near: 1
+  n_subs: 1
+  n_obs: 1 # number of observations 
+  n_ts: 1000 # number of timeseries to select observations from
+  unit_var: True
+  zero_mean: True
+
+train:
+  lr: 0.001
+  n_refresh: 500
+  batch_size: 256
+  plot: True
+  n_iters: 5000
+  n_iftp: 6
+  n_smooth: 6
+  savepickle: False
